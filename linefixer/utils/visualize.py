@@ -1,6 +1,6 @@
 from typing import Dict
 import matplotlib.pyplot as plt
-import torch
+import torch, os
 
 
 def visualize_batch(epoch, model, loader, device, num_samples=4, results_dir=None):
@@ -41,6 +41,7 @@ def visualize_batch(epoch, model, loader, device, num_samples=4, results_dir=Non
 
         plt.tight_layout()
         if results_dir:
+            os.makedirs(results_dir, exist_ok=True)
             plt.savefig(f"{results_dir}/visualization_epoch_{epoch}.png")
         else:
             plt.show()
@@ -68,6 +69,7 @@ def plot_training_history(epoch, history: Dict[str, list], results_dir=None):
 
     plt.tight_layout()
     if results_dir:
+        os.makedirs(results_dir, exist_ok=True)
         plt.savefig(f"{results_dir}/training_history_epoch_{epoch}.png")
     else:
         plt.show()

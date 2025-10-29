@@ -150,12 +150,12 @@ def main():
                 'val_loss': val_loss,
             }, os.path.join(args.checkpoint_dir, f'checkpoint_epoch_{epoch + 1}.pth'))
 
-            if args.visualize_every and ((epoch + 1) % args.visualize_every == 0):
-                try:
-                    visualize_batch(epoch, model, val_loader, device, num_samples=4, results_dir=args.results_dir)
-                    plot_training_history(epoch, history, results_dir=args.results_dir)
-                except Exception as e:
-                    print(f"Visualization failed: {e}")
+        if args.visualize_every and ((epoch + 1) % args.visualize_every == 0):
+            try:
+                visualize_batch(epoch, model, val_loader, device, num_samples=4, results_dir=args.results_dir)
+                plot_training_history(epoch, history, results_dir=args.results_dir)
+            except Exception as e:
+                print(f"Visualization failed: {e}")
 
         # Early stopping
         if patience_counter >= 5:
