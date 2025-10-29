@@ -25,6 +25,10 @@ This project trains a U-Net to convert broken single-pixel line drawings into re
 
 ## Installation
 
+```bash
+python install_requirements.py
+```
+
 ## Training
 
 Assumes your data structure:
@@ -45,9 +49,10 @@ python run_training.py \
   --train_dir train \
   --val_dir val \
   --batch_size 16 \
-  --epochs 100 \
+  --epochs 10 \
   --lr 1e-3 \
-  --save_every 5
+  --save_every 5 \
+  --visualize_every 1
 ```
 
 Artifacts:
